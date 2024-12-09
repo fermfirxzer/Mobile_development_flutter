@@ -6,88 +6,127 @@ void main() {
 
 class Myapp extends StatelessWidget {
   const Myapp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme:ThemeData(
+        theme: ThemeData(
           useMaterial3: true,
-          appBarTheme: const AppBarTheme(color:Colors.red),
+          appBarTheme: const AppBarTheme(color: Colors.red),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
         ),
         home: Scaffold(
           appBar: AppBar(
-            title: const Text("My appbar"),
+            title: const Center(
+                child: Text("My appbar",
+                    style: TextStyle(fontSize: 24, color: Colors.white))),
+            leading: IconButton(
+                onPressed: () {
+                  debugPrint("This is title!");
+                },
+                icon: const Icon(Icons.menu)),
+            actions: [
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.home, color: Colors.white),
+              ),
+              IconButton(onPressed: () {}, icon: const Icon(Icons.fullscreen))
+            ],
           ),
-          body: const Text("My body Text"),
+          body: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        'assets/images/dash-fainting.gif',
+                        width: 250,
+                        height: 200,
+                      ),
+                      const Text(
+                        "ขอบคุณที่ใช้บริการ App ของเรา",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                      const Text(
+                        "เรายินดีที่ได้เป็นส่วนหนึ่งในการเดินทางของคุณ",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.normal),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Column(
+                    children: [
+                      Text("สรุปรายละเอียดการชาร์จ",
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold)),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Icon(Icons.calendar_month),Text("วันที่ชาร์จ"),
+                            ],
+                          ),
+                                  Text("9 กันยายน 2565"),
+                        ],
+                      ),
+                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Icon(Icons.calendar_month),Text("วันที่ชาร์จ"),
+                            ],
+                          ),
+                                  Text("9 กันยายน 2565"),
+                          
+                        ],
+                      ),
+                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Icon(Icons.calendar_month),Text("วันที่ชาร์จ"),
+                            ],
+                          ),
+                                  Text("9 กันยายน 2565"),
+                        ],
+                      ),
+                    ],
+                  ),
+                )
+              ]),
+          floatingActionButton: FloatingActionButton(
+              onPressed: () {
+                debugPrint("TAB pressed");
+              },
+              child: const Icon(Icons.exit_to_app)),
         ));
   }
 }
-// import 'package:flutter/material.dart';
 
-// void main() {
-//   runApp(const MyApp());
-// }
-
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Flutter Demo',
-//       theme: ThemeData(
-//         colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
-//         useMaterial3: true,
-//       ),
-//       home: const MyHomePage(title: 'Jirayus Flutter App'),
-//     );
-//   }
-// }
-
-// class MyHomePage extends StatefulWidget {
-//   const MyHomePage({super.key, required this.title});
-
-//   final String title;
-
-//   @override
-//   State<MyHomePage> createState() => _MyHomePageState();
-// }
-
-// class _MyHomePageState extends State<MyHomePage> {
-//   int _counter = 0;
-
-//   void _incrementCounter() {
-//     setState(() {
-//       _counter--;
-//     });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//         appBar: AppBar(
-//           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-//           title: Text(widget.title),
-//         ),
-//         body: Center(
-//           child: Column(
-//             mainAxisAlignment: MainAxisAlignment.center,
-//             children: <Widget>[
-//               const Text(
-//                 'Jirayus CountDown :',
-//               ),
-//               Text(
-//                 '$_counter',
-//                 style: Theme.of(context).textTheme.headlineMedium,
-//               ),
-//             ],
+// body:Center(
+//             child:Column( 
+//               mainAxisAlignment: MainAxisAlignment.start,
+//               crossAxisAlignment: CrossAxisAlignment.center,
+//               children: [
+//                     const Text("Hi",style: TextStyle(fontSize: 24),),const Text("Nice Try",style: TextStyle(fontSize: 24),),
+//                     ElevatedButton(onPressed: () {debugPrint("Nice Try!");},
+                    
+//                     child: const Text("This is ElevatedButton!!",style: TextStyle(fontSize: 16),)),
+//                     Image.asset('assets/images/dash-fainting.gif',width: 250,height: 250,),
+//                     Row(mainAxisAlignment: MainAxisAlignment.center,children: [Text("Hi,Nice Try bro!"),IconButton(onPressed: () {}, icon: const Icon(Icons.home,size:30),padding: const EdgeInsets.all(40),),],),
+//                     // Image.asset('assets/images/dash-fainting.gif',width: 250,height: 250,),IconButton(onPressed: () {}, icon: const Icon(Icons.home,size:30),padding: const EdgeInsets.all(40),),
+//               ],
+//             ),
 //           ),
-//         ),
-//         floatingActionButton: FloatingActionButton(
-//           onPressed: _incrementCounter,
-//           tooltip: 'Increment',
-//           child: const Icon(Icons.add),
-//         ));
-//   }
-// }
