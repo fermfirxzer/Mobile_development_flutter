@@ -30,7 +30,6 @@ class Myapp extends StatelessWidget {
                 onPressed: () {},
                 icon: const Icon(Icons.home, color: Colors.white),
               ),
-              IconButton(onPressed: () {}, icon: const Icon(Icons.fullscreen))
             ],
           ),
           body: Column(
@@ -73,38 +72,59 @@ class Myapp extends StatelessWidget {
                         children: [
                           Row(
                             children: [
-                              Icon(Icons.calendar_month),Text("วันที่ชาร์จ"),
+                              Icon(Icons.calendar_month),
+                              Text("วันที่ชาร์จ"),
                             ],
                           ),
-                                  Text("9 กันยายน 2565"),
+                          Text("9 กันยายน 2565"),
                         ],
                       ),
-                       Row(
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
                             children: [
-                              Icon(Icons.calendar_month),Text("วันที่ชาร์จ"),
+                              Icon(Icons.baby_changing_station),
+                              Text("สถานีชาร์จ"),
                             ],
                           ),
-                                  Text("9 กันยายน 2565"),
-                          
+                          Text("100 บาท"),
                         ],
                       ),
-                       Row(
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
                             children: [
-                              Icon(Icons.calendar_month),Text("วันที่ชาร์จ"),
+                              Icon(Icons.link),
+                              Text("ประเภทการชาร์จ"),
                             ],
                           ),
-                                  Text("9 กันยายน 2565"),
+                          Text("CCS2"),
                         ],
                       ),
                     ],
                   ),
-                )
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: 16.0), // Horizontal padding
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "ค่าบริการรวมทั้งสิ้น",
+                        style: TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "100 บาท",
+                        style: TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ),
               ]),
           floatingActionButton: FloatingActionButton(
               onPressed: () {
