@@ -4,6 +4,45 @@ void main() {
   runApp(const Myapp());
 }
 
+class ChangingPage extends StatefulWidget {
+  const ChangingPage({super.key});
+
+  @override
+  State<ChangingPage> createState() => _ChangingPageState();
+}
+
+class _ChangingPageState extends State<ChangingPage> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          useMaterial3: true,
+          appBarTheme: const AppBarTheme(color: Colors.red),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+        ),
+        home: Scaffold(
+            appBar: AppBar(),
+             body: const Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      TextField(
+                        decoration: InputDecoration(
+                          labelText: 'Enter your message',
+                          border: OutlineInputBorder(),
+                        ),
+                      ),Text("Test")
+                    ],
+                  )
+                ],
+              ),
+            )));
+  }
+}
+
 class Myapp extends StatelessWidget {
   const Myapp({super.key});
   @override
@@ -33,99 +72,123 @@ class Myapp extends StatelessWidget {
             ],
           ),
           body: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Center(
-                  child: Column(
-                    children: [
-                      Image.asset(
-                        'assets/images/dash-fainting.gif',
-                        width: 250,
-                        height: 200,
-                      ),
-                      const Text(
-                        "ขอบคุณที่ใช้บริการ App ของเรา",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
-                      ),
-                      const Text(
-                        "เรายินดีที่ได้เป็นส่วนหนึ่งในการเดินทางของคุณ",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.normal),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Column(
-                    children: [
-                      Text("สรุปรายละเอียดการชาร์จ",
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold)),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Center(
+                      child: Column(
                         children: [
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(
+                                20.0), // Adjust the radius as needed
+                            child: Image.asset(
+                              'assets/images/dash-fainting.gif',
+                              width: 250,
+                              height: 200,
+                              fit: BoxFit
+                                  .cover, // Ensures the image is properly fitted within the specified dimensions
+                            ),
+                          ),
+                          const Text(
+                            "ขอบคุณที่ใช้บริการ App ของเรา",
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                          const Text(
+                            "เรายินดีที่ได้เป็นส่วนหนึ่งในการเดินทางของคุณ",
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.normal),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.all(20),
+                      child: Column(
+                        children: [
+                          Text("สรุปรายละเอียดการชาร์จ",
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold)),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Icon(Icons.calendar_month),
-                              Text("วันที่ชาร์จ"),
+                              Expanded(
+                                  child: Text(
+                                "วันที่ชาร์จ",
+                                overflow: TextOverflow.ellipsis,
+                              )),
+                              Text("9 กันยายน 2565"),
                             ],
                           ),
-                          Text("9 กันยายน 2565"),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Icon(Icons.baby_changing_station),
-                              Text("สถานีชาร์จ"),
+                              Row(
+                                children: [
+                                  Icon(Icons.baby_changing_station),
+                                  Text("สถานีชาร์จ"),
+                                ],
+                              ),
+                              Text("100 บาท"),
                             ],
                           ),
-                          Text("100 บาท"),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Icon(Icons.link),
-                              Text("ประเภทการชาร์จ"),
+                              Row(
+                                children: [
+                                  Icon(Icons.link),
+                                  Text("ประเภทการชาร์จ"),
+                                ],
+                              ),
+                              Text("CCS2"),
                             ],
                           ),
-                          Text("CCS2"),
                         ],
                       ),
-                    ],
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: 16.0), // Horizontal padding
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "ค่าบริการรวมทั้งสิ้น",
-                        style: TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.bold),
+                    ),
+                    Center(
+                      child: Card(
+                        elevation: 10,
+                        margin: const EdgeInsets.all(10),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          side: const BorderSide(
+                            color: Colors.red, // Border color
+                            width: 2.0, // Border width
+                          ),
+                        ),
+                        child: const Padding(
+                          padding: EdgeInsets.all(20),
+                          child: Text(
+                            "ราคา :100 บาท",
+                          ),
+                        ),
                       ),
-                      Text(
-                        "100 บาท",
-                        style: TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-              ]),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      margin: const EdgeInsets.all(10),
+                      color: Colors.red,
+                      child: const Center(
+                          child: Text("ค่าบริการรวมทั้งสิน : 100 บาท")),
+                    )
+                  ]),
+            ],
+          ),
           floatingActionButton: FloatingActionButton(
               onPressed: () {
                 debugPrint("TAB pressed");
@@ -134,19 +197,3 @@ class Myapp extends StatelessWidget {
         ));
   }
 }
-
-// body:Center(
-//             child:Column( 
-//               mainAxisAlignment: MainAxisAlignment.start,
-//               crossAxisAlignment: CrossAxisAlignment.center,
-//               children: [
-//                     const Text("Hi",style: TextStyle(fontSize: 24),),const Text("Nice Try",style: TextStyle(fontSize: 24),),
-//                     ElevatedButton(onPressed: () {debugPrint("Nice Try!");},
-                    
-//                     child: const Text("This is ElevatedButton!!",style: TextStyle(fontSize: 16),)),
-//                     Image.asset('assets/images/dash-fainting.gif',width: 250,height: 250,),
-//                     Row(mainAxisAlignment: MainAxisAlignment.center,children: [Text("Hi,Nice Try bro!"),IconButton(onPressed: () {}, icon: const Icon(Icons.home,size:30),padding: const EdgeInsets.all(40),),],),
-//                     // Image.asset('assets/images/dash-fainting.gif',width: 250,height: 250,),IconButton(onPressed: () {}, icon: const Icon(Icons.home,size:30),padding: const EdgeInsets.all(40),),
-//               ],
-//             ),
-//           ),
