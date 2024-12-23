@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-class Change extends StatelessWidget {
-  const Change({super.key});
+class ChangePage extends StatelessWidget {
+  const ChangePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +20,15 @@ class ChangingPage extends StatefulWidget {
 }
 
 class _ChangingPageState extends State<ChangingPage> {
+
+  final TextEditingController current_SOC=TextEditingController();
+  final TextEditingController target_SOC=TextEditingController();
+  final TextEditingController change_rate=TextEditingController();
+  final TextEditingController volt_rate=TextEditingController();
+  TextEditingController w_change=TextEditingController();
+  final TextEditingController Bat_change=TextEditingController();
+  final TextEditingController Efficiency_change=TextEditingController(); 
+  String Result="0";
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -35,13 +43,14 @@ class _ChangingPageState extends State<ChangingPage> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Column(
+             Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text("Current SOC %"),
                   SizedBox(
                     width: 100,
                     child: TextField(
+                      controller: current_SOC,
                       decoration: InputDecoration(border: OutlineInputBorder()),
                     ),
                   ),
@@ -52,13 +61,15 @@ class _ChangingPageState extends State<ChangingPage> {
                 width: 100,
                 height: 75,
               ),
-              const Column(
+             Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text("Target SOC %"),
                   SizedBox(
                     width: 100,
+                    
                     child: TextField(
+                      controller:target_SOC,
                       decoration: InputDecoration(border: OutlineInputBorder()),
                     ),
                   ),
@@ -69,7 +80,7 @@ class _ChangingPageState extends State<ChangingPage> {
           const SizedBox(
             height: 20,
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.all(10.0),
             child: Column(
               children: [
@@ -93,7 +104,9 @@ class _ChangingPageState extends State<ChangingPage> {
                       height: 40,
                       child: TextField(
                         obscureText: false,
+                        controller:change_rate,
                         decoration: InputDecoration(
+                          
                             border: OutlineInputBorder(),
                             labelText: "Charge rate"),
                       ),
@@ -123,6 +136,7 @@ class _ChangingPageState extends State<ChangingPage> {
                       height: 40,
                       child: TextField(
                         obscureText: false,
+                        controller: volt_rate,
                         decoration: InputDecoration(
                             border: OutlineInputBorder(), labelText: "Volt"),
                       ),
@@ -151,6 +165,7 @@ class _ChangingPageState extends State<ChangingPage> {
                       width: 200,
                       height: 40,
                       child: TextField(
+                        controller: w_change,
                         obscureText: false,
                         decoration: InputDecoration(
                             border: OutlineInputBorder(),
@@ -162,7 +177,85 @@ class _ChangingPageState extends State<ChangingPage> {
                 SizedBox(
                   height: 20,
                 ),
-                Text("เวลาที่ใช้ชาร์จโดยเฉลี่ย : 1000.000 hrs")
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Icon(Icons.battery_charging_full),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text("Bat")
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      width: 200,
+                      height: 40,
+                      child: TextField(
+                        controller: Bat_change,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: "Bat"),
+                      ),
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Icon(Icons.battery_alert),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text("Effiency")
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      width: 200,
+                      height: 40,
+                      child: TextField(
+                        controller: Efficiency_change,
+                        obscureText: false,
+                        decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: "Effiency"),
+                      ),
+                    )
+                  ],
+                ),
+                ElevatedButton(onPressed: (){
+                  double? current=double.tryParse(current_SOC.text);
+                  double? target=double.tryParse(target_SOC.text);
+                  double? changerate=double.tryParse(change_rate.text);
+                  double? volt=double.tryParse(volt_rate.text);
+                  double? bat=double.tryParse(Bat_change.text);
+                  double? efficiency=double.tryParse(Efficiency_change.text);
+
+                  double? changingPower=volt!*changerate!/1000;
+                  double? result=(target!-current!)*bat!/100/(changingPower*efficiency!);
+                  setState(() {
+
+                    Result="$result";
+                    w_change.text="$changingPower";
+                  });
+                  debugPrint("$result");
+                } , child: const Text("คำนวนระยะเวลา")),
+                const SizedBox(height: 20,),
+                Text("เวลาที่ใช้ชาร์จโดยเฉลี่ย : ${Result} hrs")
               ],
             ),
           ),
