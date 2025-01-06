@@ -209,11 +209,8 @@ class Homepage extends StatelessWidget {
                 ),
                 ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ChangePage(),
-                        ),
+                      Navigator.pushNamed(
+                        context,'/ChangePage'
                       );
                     },
                     child: const Text("Press to go to Changing page")),

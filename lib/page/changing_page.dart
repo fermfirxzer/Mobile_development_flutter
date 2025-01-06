@@ -87,7 +87,7 @@ class _ChangingPageState extends State<ChangingPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Expanded(
+                    const Expanded(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -105,7 +105,7 @@ class _ChangingPageState extends State<ChangingPage> {
                       child: TextField(
                         obscureText: false,
                         controller:change_rate,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           
                             border: OutlineInputBorder(),
                             labelText: "Charge rate"),
@@ -113,13 +113,13 @@ class _ChangingPageState extends State<ChangingPage> {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Expanded(
+                    const Expanded(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -137,19 +137,19 @@ class _ChangingPageState extends State<ChangingPage> {
                       child: TextField(
                         obscureText: false,
                         controller: volt_rate,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                             border: OutlineInputBorder(), labelText: "Volt"),
                       ),
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Expanded(
+                    const Expanded(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -167,20 +167,20 @@ class _ChangingPageState extends State<ChangingPage> {
                       child: TextField(
                         controller: w_change,
                         obscureText: false,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                             labelText: "W charge"),
                       ),
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Expanded(
+                    const Expanded(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -198,14 +198,14 @@ class _ChangingPageState extends State<ChangingPage> {
                       child: TextField(
                         controller: Bat_change,
                         obscureText: false,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                             labelText: "Bat"),
                       ),
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 
@@ -255,7 +255,7 @@ class _ChangingPageState extends State<ChangingPage> {
                   debugPrint("$result");
                 } , child: const Text("คำนวนระยะเวลา")),
                 const SizedBox(height: 20,),
-                Text("เวลาที่ใช้ชาร์จโดยเฉลี่ย : ${Result} hrs")
+                Text("เวลาที่ใช้ชาร์จโดยเฉลี่ย : $Result hrs")
               ],
             ),
           ),

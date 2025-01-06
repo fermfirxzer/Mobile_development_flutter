@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/page/main_page.dart';
+import 'page/changing_page.dart';
+import 'page/display.dart';
+import 'page/main_page.dart';
 import './page/welcome_page.dart';
 
 void main() {
   runApp(const Myapp()); // This is where you start the app
-}
+} 
 
 class Myapp extends StatelessWidget {
   const Myapp({super.key});
@@ -17,6 +19,12 @@ class Myapp extends StatelessWidget {
           appBarTheme: const AppBarTheme(color: Colors.red),
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
         ),
-        home:const Homepage());
+        initialRoute: '/',
+        routes: {
+          '/': (context) => Homepage(),
+          '/ChangePage': (context) => ChangePage(),
+          '/WelcomePage': (context) => WelcomePage(),
+          '/DisplayPage': (context) => Display(),
+        });
   }
 }
