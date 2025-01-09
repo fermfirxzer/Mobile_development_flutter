@@ -19,7 +19,9 @@ class ProfilePage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Hi, ${username ?? 'Guest'}!"),
+              Text("Hi, ${username ?? 'Guest'}!",
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold)),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pop(context);

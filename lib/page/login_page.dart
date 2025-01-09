@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/page/main_page.dart';
-import 'display_page.dart';
+import 'profile_page.dart';
 import 'changing_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -30,8 +30,8 @@ class _LoginPageState extends State<LoginPage> {
             child: Center(
               child: Column(children: [
                 const Text(
-                  "Please Login!",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  "Fill in all information to Login!",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
                 ),
                 const SizedBox(
                   height: 20,
@@ -73,11 +73,20 @@ class _LoginPageState extends State<LoginPage> {
                       String? user_password =
                           password.text.isEmpty ? null : password.text;
                       // Ensure that user_name is not empty, and user_age is valid
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  MainPage(username: user_name!)));
+                      if (user_name != null &&
+                          user_name.isNotEmpty &&
+                          user_password != null &&
+                          user_password.isNotEmpty) {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    MainPage(username: user_name)));
+                      } else {
+                        setState(() {
+                          _output = "Please fill in username and password";
+                        });
+                      }
                     },
                     child: const Text("Login"))
               ]),
