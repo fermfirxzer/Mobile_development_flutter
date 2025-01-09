@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'page/changing_page.dart';
-import 'page/display.dart';
-import 'page/main_page.dart';
-import './page/welcome_page.dart';
+import 'page/login_page.dart';
+import 'page/profile_page.dart';
 
 void main() {
   runApp(const Myapp()); // This is where you start the app
-} 
+}
 
 class Myapp extends StatelessWidget {
   const Myapp({super.key});
@@ -21,10 +20,9 @@ class Myapp extends StatelessWidget {
         ),
         initialRoute: '/',
         routes: {
-          '/': (context) => Homepage(),
-          '/ChangePage': (context) => ChangePage(),
-          '/WelcomePage': (context) => WelcomePage(),
-          '/DisplayPage': (context) => Display(),
+          '/': (context) => const LoginPage(),
+          '/ChangePage': (context) => const ChangePage(),
+          '/ProfilePage': (context) => const ProfilePage(),
         });
   }
 }

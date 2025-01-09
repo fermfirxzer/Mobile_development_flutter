@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
-import 'display.dart';
+import 'package:flutter_application_1/page/main_page.dart';
+import 'display_page.dart';
 import 'changing_page.dart';
 
-class WelcomePage extends StatefulWidget {
-  const WelcomePage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   @override
-  State<WelcomePage> createState() => _WelcomePageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _WelcomePageState extends State<WelcomePage> {
+class _LoginPageState extends State<LoginPage> {
   String _output = "Welcome!";
   TextEditingController name = TextEditingController();
-  TextEditingController age = TextEditingController();
+  TextEditingController password = TextEditingController();
   TextEditingController textEditingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,10 @@ class _WelcomePageState extends State<WelcomePage> {
             padding: const EdgeInsets.all(10),
             child: Center(
               child: Column(children: [
-                const Text("Please Login!",style: TextStyle(fontSize:16,fontWeight: FontWeight.bold),),
+                const Text(
+                  "Please Login!",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
                 const SizedBox(
                   height: 20,
                 ),
@@ -47,10 +51,10 @@ class _WelcomePageState extends State<WelcomePage> {
                 SizedBox(
                   height: 50,
                   child: TextField(
-                    controller: age,
-                    obscureText: false,
+                    controller: password,
+                    obscureText: true,
                     decoration: const InputDecoration(
-                        border: OutlineInputBorder(), labelText: "Age"),
+                        border: OutlineInputBorder(), labelText: "Password"),
                   ),
                 ),
                 Text('$_output'),
@@ -65,15 +69,17 @@ class _WelcomePageState extends State<WelcomePage> {
                 ),
                 ElevatedButton(
                     onPressed: () {
-                      String? user_name = name.text.isEmpty?null:name.text;
-                      int? user_age = int.tryParse(age.text);
+                      String? user_name = name.text.isEmpty ? null : name.text;
+                      String? user_password =
+                          password.text.isEmpty ? null : password.text;
                       // Ensure that user_name is not empty, and user_age is valid
-                        Navigator.pushReplacement(
+                      Navigator.pushReplacement(
                           context,
-                             MaterialPageRoute(builder: (context) => Display(name: user_name, age: user_age)));
-                      
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  MainPage(username: user_name!)));
                     },
-                    child: const Text("Go to Display Page"))
+                    child: const Text("Login"))
               ]),
             ),
           )
