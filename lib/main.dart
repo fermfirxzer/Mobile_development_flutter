@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'page/changing_page.dart';
 import 'page/login_page.dart';
 import 'page/profile_page.dart';
-
+import 'page/list_view.dart';
+import 'page/my_futurebuilder_page.dart';
+import 'page/http_page.dart';
 void main() {
   runApp(const Myapp()); // This is where you start the app
 }
@@ -20,9 +22,11 @@ class Myapp extends StatelessWidget {
         ),
         initialRoute: '/',
         routes: {
-          '/': (context) => const LoginPage(),
+          '/': (context) => HttpPage(),
           '/ChangePage': (context) => const ChangePage(),
           '/ProfilePage': (context) => const ProfilePage(),
+          '/LoginPage':(context)=>const LoginPage(),
+          '/MyFutureBuilderPage':(context)=>const MyFutureBuilderPage(),
         });
   }
 }

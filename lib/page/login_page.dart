@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/page/main_page.dart';
+import 'main_page.dart';
 import 'profile_page.dart';
 import 'changing_page.dart';
 
